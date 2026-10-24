@@ -1,0 +1,116 @@
+import csv
+import math
+import random
+
+# Fixando semente para reprodutibilidade
+random.seed(42)
+n_linhas = 500000
+
+print("=" * 80)
+print("SISTEMA DE AUDITORIA: EXECUÇÃO DE TESTES E REPRODUÇÃO DE RESULTADOS")
+print("=" * 80)
+
+# 1. Parâmetros de Materialidade
+ativo_total = 60963000000.00  # R$ 60,963 bilhões (Consolidado 2025)
+mat_global = ativo_total * 0.01  # 1%
+mat_execucao = mat_global * 0.75  # 75%
+tdt_limite = mat_global * 0.05  # 5%
+
+# 2. Categorias e Pesos da Vibra Energia S.A.
+categorias = [
+    "Tanques e Equipamentos de Base",
+    "Edificações e Benfeitorias",
+    "Bombas e Unidades de Abastecimento",
+    "Móveis e Utensílios",
+    "Equipamentos de Informática",
+]
+pesos_cat = [0.4, 0.2, 0.2, 0.1, 0.1]
+centros_custo = [
+    "CC-RIO-01 (Matriz)",
+    "CC-SP-02 (Base Paulínia)",
+    "CC-BA-03 (Base Candeias)",
+    "CC-MG-04 (Base Betim)",
+    "CC-RS-05 (Base Canoas)",
+]
+
+# 3. Geração e Ajuste da Base
+custos_raw = [
+    math.exp(random.normalvariate(9.5, 1.2)) for _ in range(n_linhas)
+]
+fator_escala = 22578000000.0 / sum(custos_raw)  # Escala para R$ 22.578 mi
+indices_erros = set(random.sample(range(n_linhas), 50))
+
+base_dados = []
+excecoes_amostra = []
+
+for i in range(n_linhas):
+  id_bem = f"IMOB-{i+1:07d}"
+  cc = random.choice(centros_custo)
+  cat = random.choices(categorias, weights=pesos_cat)[0]
+
+  custo = round(custos_raw[i] * fator_escala, 2)
+  vida_util = random.choice([10, 20, 30, 40])
+  anos_uso = random.randint(1, 15)
+
+  if i in indices_erros:
+    depr = round(custo * 1.05, 2)  # Erro de teste
+    inconsistente = 1
+  else:
+    depr = round(min(custo * 0.95, custo * (anos_uso / (vida_util + 1))), 2)
+    inconsistente = 0
+
+  liquido = round(custo - depr, 2)
+  linha = [
+      id_bem,
+      cc,
+      cat,
+      custo,
+      depr,
+      liquido,
+      vida_util,
+      anos_uso,
+      inconsistente,
+  ]
+  base_dados.append(linha)
+
+  if depr > custo:
+    excecoes_amostra.append(linha)
+
+# 4. Exportação dos Relatórios CSV
+with open(
+    "base_analitica_imobilizado_500k.csv", "w", newline="", encoding="utf-8-sig"
+) as f:
+  writer = csv.writer(f)
+  writer.writerow([
+      "ID_Bem",
+      "Centro_Custo",
+      "Categoria",
+      "Custo_Aquisicao_BRL",
+      "Depreciacao_Acumulada_BRL",
+      "Valor_Contabil_Liquido_BRL",
+      "Anos_Vida_Util",
+      "Anos_Uso",
+      "Inconsistencia_Detectada",
+  ])
+  writer.writerows(base_dados)
+
+with open(
+    "relatorio_amostra_excecoes.csv", "w", newline="", encoding="utf-8-sig"
+) as f:
+  writer = csv.writer(f)
+  writer.writerow([
+      "ID_Bem",
+      "Centro_Custo",
+      "Categoria",
+      "Custo_Aquisicao_BRL",
+      "Depreciacao_Acumulada_BRL",
+      "Valor_Contabil_Liquido_BRL",
+      "Anos_Vida_Util",
+      "Anos_Uso",
+      "Inconsistencia_Detectada",
+  ])
+  writer.writerows(excecoes_amostra)
+
+print("[SUCESSO] Todos os testes executados e relatórios gerados.")
+print(f"Materialidade Global: R$ {mat_global:,.2f}")
+print(f"Total de Exceções Substantivas Encontradas: {len(excecoes_amostra)}")
