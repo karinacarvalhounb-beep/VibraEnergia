@@ -1,0 +1,51 @@
+﻿ID_Bem,Centro_Custo,Categoria,Custo_Aquisicao_BRL,Depreciacao_Acumulada_BRL,Valor_Contabil_Liquido_BRL,Anos_Vida_Util,Anos_Uso,Inconsistencia_Detectada
+IMOB-0003403,CC-BA-03 (Base Candeias),Móveis e Utensílios,70884.46,74428.68,-3544.22,20,15,1
+IMOB-0009130,CC-MG-04 (Base Betim),Tanques e Equipamentos de Base,17900.3,18795.31,-895.01,10,13,1
+IMOB-0039963,CC-MG-04 (Base Betim),Tanques e Equipamentos de Base,304541.53,319768.61,-15227.08,30,3,1
+IMOB-0051463,CC-RIO-01 (Matriz),Equipamentos de Informática,38694.85,40629.59,-1934.74,40,5,1
+IMOB-0058563,CC-RIO-01 (Matriz),Tanques e Equipamentos de Base,42165.15,44273.41,-2108.26,10,4,1
+IMOB-0091190,CC-RS-05 (Base Canoas),Móveis e Utensílios,57296.14,60160.95,-2864.81,20,8,1
+IMOB-0095232,CC-RIO-01 (Matriz),Tanques e Equipamentos de Base,33417.03,35087.88,-1670.85,40,14,1
+IMOB-0096248,CC-BA-03 (Base Candeias),Tanques e Equipamentos de Base,17701.12,18586.18,-885.06,30,4,1
+IMOB-0108910,CC-BA-03 (Base Candeias),Edificações e Benfeitorias,91758.12,96346.03,-4587.91,40,9,1
+IMOB-0130431,CC-BA-03 (Base Candeias),Móveis e Utensílios,21743.71,22830.9,-1087.19,10,4,1
+IMOB-0134656,CC-SP-02 (Base Paulínia),Bombas e Unidades de Abastecimento,31271.48,32835.05,-1563.57,20,10,1
+IMOB-0163386,CC-MG-04 (Base Betim),Edificações e Benfeitorias,32602.44,34232.56,-1630.12,30,8,1
+IMOB-0175676,CC-MG-04 (Base Betim),Bombas e Unidades de Abastecimento,53989.89,56689.38,-2699.49,20,8,1
+IMOB-0209736,CC-SP-02 (Base Paulínia),Móveis e Utensílios,4971.1,5219.66,-248.56,20,3,1
+IMOB-0249135,CC-RIO-01 (Matriz),Tanques e Equipamentos de Base,469941.71,493438.8,-23497.09,30,15,1
+IMOB-0262006,CC-SP-02 (Base Paulínia),Tanques e Equipamentos de Base,11534.52,12111.25,-576.73,20,9,1
+IMOB-0262320,CC-MG-04 (Base Betim),Bombas e Unidades de Abastecimento,44053.34,46256.01,-2202.67,30,10,1
+IMOB-0264705,CC-MG-04 (Base Betim),Móveis e Utensílios,1159.5,1217.48,-57.98,40,2,1
+IMOB-0265985,CC-RS-05 (Base Canoas),Bombas e Unidades de Abastecimento,12419.58,13040.56,-620.98,20,13,1
+IMOB-0293123,CC-MG-04 (Base Betim),Móveis e Utensílios,83342.5,87509.62,-4167.12,30,12,1
+IMOB-0302555,CC-SP-02 (Base Paulínia),Bombas e Unidades de Abastecimento,36609.95,38440.45,-1830.5,40,6,1
+IMOB-0316922,CC-MG-04 (Base Betim),Edificações e Benfeitorias,69685.12,73169.38,-3484.26,10,13,1
+IMOB-0323373,CC-MG-04 (Base Betim),Bombas e Unidades de Abastecimento,4219.59,4430.57,-210.98,40,11,1
+IMOB-0328181,CC-RIO-01 (Matriz),Tanques e Equipamentos de Base,25463.99,26737.19,-1273.2,10,5,1
+IMOB-0330876,CC-RS-05 (Base Canoas),Equipamentos de Informática,51961.29,54559.35,-2598.06,20,10,1
+IMOB-0339139,CC-RIO-01 (Matriz),Tanques e Equipamentos de Base,27530.53,28907.06,-1376.53,40,11,1
+IMOB-0339199,CC-RS-05 (Base Canoas),Móveis e Utensílios,53473.96,56147.66,-2673.7,30,5,1
+IMOB-0341750,CC-BA-03 (Base Candeias),Edificações e Benfeitorias,226337.95,237654.85,-11316.9,10,12,1
+IMOB-0343969,CC-MG-04 (Base Betim),Edificações e Benfeitorias,113135.32,118792.09,-5656.77,40,11,1
+IMOB-0355336,CC-MG-04 (Base Betim),Tanques e Equipamentos de Base,25630.46,26911.98,-1281.52,40,4,1
+IMOB-0357713,CC-BA-03 (Base Candeias),Edificações e Benfeitorias,2257.1,2369.95,-112.85,40,8,1
+IMOB-0361230,CC-RS-05 (Base Canoas),Tanques e Equipamentos de Base,12689.57,13324.05,-634.48,20,12,1
+IMOB-0361535,CC-MG-04 (Base Betim),Tanques e Equipamentos de Base,14768.37,15506.79,-738.42,40,10,1
+IMOB-0362969,CC-RIO-01 (Matriz),Tanques e Equipamentos de Base,30527.97,32054.37,-1526.4,10,15,1
+IMOB-0377447,CC-RS-05 (Base Canoas),Tanques e Equipamentos de Base,121606.4,127686.72,-6080.32,40,3,1
+IMOB-0387879,CC-RS-05 (Base Canoas),Equipamentos de Informática,27479.31,28853.28,-1373.97,10,14,1
+IMOB-0389192,CC-RIO-01 (Matriz),Móveis e Utensílios,8951.93,9399.53,-447.6,10,6,1
+IMOB-0390749,CC-RS-05 (Base Canoas),Bombas e Unidades de Abastecimento,79377.23,83346.09,-3968.86,30,9,1
+IMOB-0390914,CC-RS-05 (Base Canoas),Edificações e Benfeitorias,28227.67,29639.05,-1411.38,40,7,1
+IMOB-0394825,CC-RIO-01 (Matriz),Tanques e Equipamentos de Base,49719.6,52205.58,-2485.98,10,12,1
+IMOB-0396007,CC-BA-03 (Base Candeias),Edificações e Benfeitorias,2611.67,2742.25,-130.58,40,8,1
+IMOB-0397267,CC-RS-05 (Base Canoas),Edificações e Benfeitorias,69114.25,72569.96,-3455.71,10,4,1
+IMOB-0397760,CC-SP-02 (Base Paulínia),Edificações e Benfeitorias,36814.99,38655.74,-1840.75,20,13,1
+IMOB-0397810,CC-RS-05 (Base Canoas),Móveis e Utensílios,5424.47,5695.69,-271.22,10,2,1
+IMOB-0458100,CC-RIO-01 (Matriz),Tanques e Equipamentos de Base,16321.57,17137.65,-816.08,40,14,1
+IMOB-0465361,CC-BA-03 (Base Candeias),Tanques e Equipamentos de Base,31050.56,32603.09,-1552.53,40,1,1
+IMOB-0472747,CC-RIO-01 (Matriz),Tanques e Equipamentos de Base,64295.31,67510.08,-3214.77,10,13,1
+IMOB-0479064,CC-BA-03 (Base Candeias),Bombas e Unidades de Abastecimento,16517.46,17343.33,-825.87,20,12,1
+IMOB-0485912,CC-BA-03 (Base Candeias),Edificações e Benfeitorias,14156.37,14864.19,-707.82,30,4,1
+IMOB-0492085,CC-BA-03 (Base Candeias),Bombas e Unidades de Abastecimento,45498.1,47773.0,-2274.9,30,1,1
