@@ -1,0 +1,79 @@
+import numpy as np
+import pandas as pd
+
+# Definindo a semente para reprodutibilidade
+np.random.seed(42)
+
+n_linhas = 500000
+
+print("Iniciando a geração da base de dados sintética do Imobilizado (Vibra Energia)...")
+
+ids_bens = [f"IMOB-{i:07d}" for i in range(1, n_linhas + 1)]
+centros_custo = np.random.choice(
+    [
+        "CC-RIO-01 (Matriz)",
+        "CC-SP-02 (Base Paulínia)",
+        "CC-BA-03 (Base Candeias)",
+        "CC-MG-04 (Base Betim)",
+        "CC-RS-05 (Base Canoas)",
+    ],
+    size=n_linhas,
+    p=[0.3, 0.3, 0.2, 0.1, 0.1],
+)
+categorias = np.random.choice(
+    [
+        "Edificações e Benfeitorias",
+        "Tanques e Equipamentos de Base",
+        "Bombas e Unidades de Abastecimento",
+        "Móveis e Utensílios",
+        "Equipamentos de Informática",
+    ],
+    size=n_linhas,
+    p=[0.2, 0.4, 0.2, 0.1, 0.1],
+)
+
+# Geração de valores de aquisição realistas com viés para somar o montante global
+custo_aquisicao = np.random.lognormal(mean=9.5, sigma=1.2, size=n_linhas)
+# Ajustando a escala para que o somatório aproxime-se de ~R$ 22.578 milhões (Custo Bruto do Imobilizado Conforme Nota 13)
+fator_escala = 22578000000 / np.sum(custo_aquisicao)
+custo_aquisicao = custo_aquisicao * fator_escala
+
+anos_vida_util = np.random.choice([10, 20, 30, 40], size=n_linhas)
+anos_decorridos = np.random.randint(1, 15, size=n_linhas)
+
+# Depreciação acumulada simulada
+depreciacao_acumulada = (
+    custo_aquisicao * (anos_decorridos / (anos_vida_util + 1))
+).clip(0, custo_aquisicao * 0.95)
+
+# Inserção proposital de 50 exceções/erros para teste de auditoria
+indices_erros = np.random.choice(n_linhas, size=50, replace=False)
+depreciacao_acumulada[indices_erros] = (
+    custo_aquisicao[indices_erros] * 1.05
+)  # Erro: Depreciação maior que o custo
+
+valor_liquido = custo_aquisicao - depreciacao_acumulada
+
+df_imobilizado = pd.DataFrame(
+    {
+        "ID_Bem": ids_bens,
+        "Centro_Custo": centros_custo,
+        "Categoria": categorias,
+        "Custo_Aquisicao_BRL": np.round(custo_aquisicao, 2),
+        "Depreciacao_Acumulada_BRL": np.round(depreciacao_acumulada, 2),
+        "Valor_Contabil_Liquido_BRL": np.round(valor_liquido, 2),
+        "Anos_Vida_Util": anos_vida_util,
+        "Anos_Uso": anos_decorridos,
+        "Possui_Inconsistencia_Inserida": [
+            1 if i in indices_erros else 0 for i in range(n_linhas)
+        ],
+    }
+)
+
+# Salvando a base em CSV (para grandes volumes, pode ser compactada ou disponibilizada via link no README)
+df_imobilizado.to_csv("base_simulada_imobilizado_vibra_2025.csv", index=False)
+print("Base gerada com sucesso! Total de linhas:", len(df_imobilizado))
+print(
+    "Soma do Valor Contábil Líquido:",
+    df_imobilizado["Valor_Contabil_Liquido_BRL"].sum(),
+)
