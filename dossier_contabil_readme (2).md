@@ -5,9 +5,9 @@
 * **Empresa Auditada:** Vibra Energia S.A.
 * **CNPJ:** 02.500.884/0001-04
 * **Exercício Social de Referência:** 2025
-* **Matrícula / Identificação do Auditor (Semente Prática):** `[INSERIR MATRÍCULA OU SEMENTE]`
-* **Nome do Responsável:** `[INSERIR NOME COMPLETO]`
-* **Curso / Disciplina:** Auditoria Contábil Avançada e Governança Corporativa
+* **Matrícula / Identificação do Auditor (Semente Prática): 200058789
+* **Nome do Responsável: Karina Xavier Alves de Carvalho
+* **Curso / Disciplina:** Auditoria Contábil
 * **Data de Emissão:** 24 de Outubro de 2026
 
 ---
