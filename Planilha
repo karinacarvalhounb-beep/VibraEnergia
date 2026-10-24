@@ -1,0 +1,137 @@
+import csv
+
+print("=" * 80)
+print(
+    "GERANDO O ARQUIVO DE DICIONÁRIO E RESUMO - AUDITORIA VIBRA 2025 (FORMATO"
+    " CSV)"
+)
+print("=" * 80)
+
+# 1. Criando o arquivo CSV do Dicionário de Variáveis
+nome_arquivo_dicionario = "dicionario_variaveis_imobilizado_vibra.csv"
+
+dados_dicionario = [
+    [
+        "Codigo_Coluna",
+        "Conta_Indicador_Representado",
+        "Tipo_Dado",
+        "Formato_Padrao",
+        "Regra_Validizacao_Procedimento_Auditoria",
+    ],
+    [
+        "ID_Bem",
+        "Identificação Única do Ativo (Registro Patrimonial)",
+        "Texto (String)",
+        "IMOB-#######",
+        (
+            "Chave primária unívoca; não pode conter valores nulos nem"
+            " duplicados."
+        ),
+    ],
+    [
+        "Centro_Custo",
+        "Centro de Custo / Unidade Operacional",
+        "Texto (String)",
+        "CC-[SIGLA]-[NUMERO]",
+        "Deve corresponder a uma unidade operacional ativa da companhia.",
+    ],
+    [
+        "Categoria",
+        "Classe Contábil do Imobilizado",
+        "Texto (String)",
+        "Texto Descritivo",
+        "Classificação padronizada conforme a Nota Explicativa 13.",
+    ],
+    [
+        "Custo_Aquisicao_BRL",
+        "Saldo Bruto Histórico / Custo de Aquisição",
+        "Numérico (Float)",
+        "R$ #,##0.00",
+        (
+            "Soma concilia com o saldo bruto do imobilizado (R$ 22,578"
+            " bilhões)."
+        ),
+    ],
+    [
+        "Depreciacao_Acumulada_BRL",
+        "Depreciação Acumulada Registrada",
+        "Numérico (Float)",
+        "R$ #,##0.00",
+        "Soma concilia com a conta retificadora (R$ 7,259 bilhões).",
+    ],
+    [
+        "Valor_Contabil_Liquido_BRL",
+        "Saldo Contábil Residual Líquido",
+        "Numérico (Float)",
+        "R$ #,##0.00",
+        "Calculado por: Custo de Aquisição - Depreciação Acumulada.",
+    ],
+    [
+        "Anos_Vida_Util",
+        "Vida Útil Econômica Estimada",
+        "Numérico (Int)",
+        "0",
+        "Deve estar de acordo com laudos técnicos e políticas contábeis.",
+    ],
+    [
+        "Anos_Uso",
+        "Tempo de Utilização Decorrido",
+        "Numérico (Int)",
+        "0",
+        "Utilizado para recalcular e auditar a depreciação acumulada.",
+    ],
+    [
+        "Inconsistencia_Detectada",
+        "Indicador de Exceção de Auditoria",
+        "Binário (Int)",
+        "0 ou 1",
+        "Flag gerada para isolar distorções em testes substantivos.",
+    ],
+]
+
+with open(
+    nome_arquivo_dicionario, mode="w", newline="", encoding="utf-8-sig"
+) as f:
+  escritor = csv.writer(f)
+  escritor.writerows(dados_dicionario)
+
+print(
+    f"[SUCESSO] Arquivo de Dicionário criado com sucesso:"
+    f" {nome_arquivo_dicionario}"
+)
+
+
+# 2. Criando o arquivo CSV de Resumo e Conciliação Contábil
+nome_arquivo_resumo = "resumo_conciliacao_imobilizado_vibra.csv"
+
+dados_resumo = [
+    [
+        "Categoria_Imobilizado",
+        "Custo_Aquisicao_Bruto_BRL",
+        "Depreciacao_Acumulada_BRL",
+        "Valor_Contabil_Liquido_BRL",
+    ],
+    ["Tanques e Equipamentos de Base", 9031200000.00, 2903600000.00, 6127600000.00],
+    ["Edificações e Benfeitorias", 4515600000.00, 1451800000.00, 3063800000.00],
+    [
+        "Bombas e Unidades de Abastecimento",
+        4515600000.00,
+        1451800000.00,
+        3063800000.00,
+    ],
+    ["Móveis e Utensílios", 2257800000.00, 725900000.00, 1531900000.00],
+    ["Equipamentos de Informática", 2257800000.00, 725900000.00, 1531900000.00],
+    [
+        "TOTAL CONSOLIDADO",
+        22578000000.00,
+        7259000000.00,
+        15319000000.00,
+    ],  # Saldo oficial Nota 13
+]
+
+with open(nome_arquivo_resumo, mode="w", newline="", encoding="utf-8-sig") as f:
+  escritor = csv.writer(f)
+  escritor.writerows(dados_resumo)
+
+print(f"[SUCESSO] Arquivo de Resumo criado com sucesso: {nome_arquivo_resumo}")
+print("=" * 80)
